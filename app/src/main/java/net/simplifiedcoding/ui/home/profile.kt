@@ -45,33 +45,39 @@ import net.simplifiedcoding.navigation.ROUTE_LOGIN
 import net.simplifiedcoding.navigation.ROUTE_PAGE
 import net.simplifiedcoding.navigation.ROUTE_PROFILE
 import net.simplifiedcoding.navigation.ROUTE_SIGNUP
+import net.simplifiedcoding.ui.animate.homeAnimation
 import net.simplifiedcoding.ui.animate.managerAnimation
 import net.simplifiedcoding.ui.auth.AuthViewModel
 import net.simplifiedcoding.ui.theme.AppTheme
 import net.simplifiedcoding.ui.theme.spacing
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter") @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun Profilescreen(viewModel: AuthViewModel?, navController: NavHostController) {
+@Composable
+fun Profilescreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
     LazyColumn(
         modifier = Modifier
-            .background(color = Color.DarkGray)
+            .background(color = Color(0XFF212121))
             .fillMaxSize(),
 //        horizontalAlignment = Alignment.CenterHorizontally,
 //        verticalArrangement = Arrangement.Center
     )
     {
         item {
+          homeAnimation(height = 500)
+
+
             Column() {
-                Image(painter = painterResource(id = R.drawable.login), contentDescription = "profile",
-                    modifier = Modifier
-                        .size(250.dp)
-                        .padding(start = 70.dp)
-                )
+//                Image(painter = painterResource(id = R.drawable.login), contentDescription = "profile",
+//                    modifier = Modifier
+//                        .size(250.dp)
+//                        .padding(start = 70.dp)
+//                )
 
                 Text(
                     text = "Account Details",
-                    style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
+                    style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0XFF673AB7)),
+
                     modifier = Modifier
                         .padding(bottom = 16.dp)
                         .padding(start = 3.dp)
@@ -114,18 +120,39 @@ import net.simplifiedcoding.ui.theme.spacing
 
                 // Add more details as needed
 
-                Text(text = "LOG OUT",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    modifier = Modifier
-                        .padding(start = 120.dp)
-                        .clickable {
-                            navController.navigate(ROUTE_LOGIN) {
-                                popUpTo(ROUTE_PROFILE) { inclusive = true }
-                            }
-                        }
-                )
+                Button(
+                    onClick = {},
+
+                    modifier = Modifier,
+                    colors = ButtonDefaults.buttonColors(Color.DarkGray),
+                    shape = RectangleShape,
+
+                    )
+                {
+                    Image(
+                        painter = painterResource(id = R.drawable.logout),
+                        contentDescription = "male",
+                        modifier = Modifier
+                            .size(35.dp)
+                    )
+                    Spacer(modifier = Modifier.width(5.dp))
+                        Text(text = "LOG OUT",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF40C4FF),
+                            modifier = Modifier
+//                                .padding(start = 120.dp)
+                                .clickable {
+                                    navController.navigate(ROUTE_LOGIN) {
+                                        popUpTo(ROUTE_PROFILE) { inclusive = true }
+                                    }
+                                }
+                    )
+
+                }
+
+
+
 
             }
 

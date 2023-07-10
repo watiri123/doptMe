@@ -23,7 +23,7 @@ import net.simplifiedcoding.R
 
 
 @Composable
-fun managerAnimation(size: Int ){
+fun homeAnimation(height: Int ){
     // to keep track if the animation is playing
 // and play pause accordingly
     var isPlaying by remember {
@@ -39,7 +39,7 @@ fun managerAnimation(size: Int ){
         LottieCompositionSpec
             // here `code` is the file name of lottie file
             // use it accordingly
-            .RawRes(R.raw.profile2)
+            .RawRes(R.raw.profile3)
     )
 
 
@@ -69,7 +69,7 @@ fun managerAnimation(size: Int ){
     )
     Box (
         modifier = androidx.compose.ui.Modifier
-            .size(size.dp)
+            .height(height.dp)
             .fillMaxSize()
     ){
         LottieAnimation(composition = composition, progress = progress)
